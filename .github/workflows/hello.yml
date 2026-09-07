@@ -16,4 +16,4 @@ jobs:
         run: echo " hello"
         
       - name: "printing repo name"
-        run: echo "the name of the repository is ${{ github.event.repository.name }}
+        run: echo "the name of the repository is ${{ github.event.repository.name }}"
