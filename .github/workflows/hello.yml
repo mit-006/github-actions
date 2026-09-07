@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      -name: "say hello"
+      - name: "say hello"
         run: echo " hello"
-      -name: "printing repo name"
-        run: echo"the name of the repository is {{ github.event.repository.name }}
+        
+      - name: "printing repo name"
+        run: echo "the name of the repository is ${{ github.event.repository.name }}
