@@ -1,0 +1,18 @@
+#GOAL: to say hello and tell the title of repo. name
+
+#name of wokrkflow
+name: CICD
+
+#giving the configuration
+on: 
+  workflow_dispatch:
+
+jobs:
+  code:
+    runs-on: ubuntu-latest
+
+    steps:
+      -name: "say hello"
+        run: echo " hello"
+      -name: "printing repo name"
+        run: echo"the name of the repository is {{ github.event.repository.name }}
