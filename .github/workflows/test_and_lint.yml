@@ -1,0 +1,32 @@
+# Goal: To check if the python code is syntactically correct
+
+name: Code Lint
+
+on:
+   push
+
+jobs:
+    
+    code-linter-and-test:
+        strategy:
+          matrix:
+            python-versions: ['3.12','3.13','3.14']
+
+        runs-on: ubuntu-latest
+        steps:
+            - name: Code Checkout
+              uses: actions/checkout@v7
+
+            - name: Setup Python
+              uses: actions/setup-python@v7
+              with:
+                python-version: ${{ matrix.python-versions }}
+
+            - name: Install Dependencies
+              run: pip install -r requirements.txt
+              
+            - name: Code Lint
+              run: ruff check .
+
+            - name: Code Tests
+              run: pytest
