@@ -7,15 +7,20 @@ on:
 
 jobs:
   code-linter-and-test:
+
+    strategy:
+      matrix:
+        python-version: [3.12,3.13,3.14]
+
     runs-on: ubuntu-latest
     steps:
       - name: Code Checkout
         uses: actions/checkout@v7
 
-      - name: install dependencies
+      - name: install python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.13' 
+          python-version: ${{ strategy.matrix.python_version}}
       
       - name: install requirements
         run: |
@@ -24,3 +29,6 @@ jobs:
       
       - name: Code Lint
         run: ruff check .
+
+      - name: run tests
+        run: pytest
