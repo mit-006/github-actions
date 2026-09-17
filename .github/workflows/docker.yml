@@ -3,7 +3,7 @@
 name: build and push docker image
 
 on:
-    push:
+    workflow_call: 
 
 jobs:
     build-and-push:
