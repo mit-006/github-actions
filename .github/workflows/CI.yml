@@ -12,3 +12,4 @@ jobs:
     build-and-push:
         needs: code-lint
         uses: ./.github/workflows/docker.yml
+        secrets: inherit 
