@@ -20,12 +20,14 @@ jobs:
 
       - name: Start nginx server
         run: |
-          sudo systemctl start nginx
+          sudo systemctl start nginx || true
+          sudo systemctl status nginx --no-pager
+          sudo ss -tlnp | grep :80 || true
 
       - name: Check nginx
         run: |
-          curl http://localhost:80
-
+          curl -v http://127.0.0.1:80
+          
       - name: Install cloudflared
         run: |
           curl -L --output cloudflared.deb \
