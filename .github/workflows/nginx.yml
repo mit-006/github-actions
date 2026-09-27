@@ -1,0 +1,36 @@
+#goal: run nginx on local host of ec2
+name: setup nginx
+
+on:
+  push:
+
+jobs:
+  run nginx:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: clone git
+        uses: actions/checkout@v7
+  
+      - name: install nginx
+        uses: nyurik/action-setup-nginx@v1
+        id: nginx
+  
+      - name: Deploy HTML file to Nginx Web Root
+        run: |
+            sudo cp /templates/index.html /var/www/html/index.html
+            
+      - name: start nginx server
+        run: |
+          sudo systemctl start nginx
+
+      - name: Check nginx
+        run: |
+          curl http://localhost:80
+  
+      - name: Create tunnel
+        run: |
+          cloudflared tunnel --url http://localhost:80
+    
+           
+    
