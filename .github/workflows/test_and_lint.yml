@@ -20,7 +20,7 @@ jobs:
       - name: install python
         uses: actions/setup-python@v7
         with:
-          python-version: ${{ strategy.matrix.python_version}}
+          python-version: ${{ strategy.matrix.python-version}}
       
       - name: install requirements
         run: |
