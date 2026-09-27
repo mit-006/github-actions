@@ -12,7 +12,9 @@ jobs:
         uses: actions/checkout@v7
 
       - name: Install nginx
-        uses: nyurik/action-setup-nginx@v1
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y nginx
 
       - name: Deploy HTML file to Nginx Web Root
         run: |
