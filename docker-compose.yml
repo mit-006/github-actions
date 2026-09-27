@@ -1,6 +1,6 @@
 services:
   app:
-    image:  mitpathar/e-commerce-python:latest
+    image:  mitpathar/git-action:latest
     ports:
       - "80:80"
       
